@@ -12,12 +12,16 @@ describe('Runs an automated GUI browser to scrape data', () => {
 
     it('Will navigate to domestic flights and scrape data', () => {
         const type = 'domestic'
-        $(FlightExposurePage.titleDomestic).scrollIntoView()
+        //$(FlightExposurePage.titleDomestic).scrollIntoView()
         $(FlightExposurePage.titleDomestic).click()
-        browser.pause(10000)
+        browser.pause(4000)
         FlightExposurePage.selectHowManyEntries(true, 100)
         browser.pause(1000)
-        FlightExposurePage.getData(FlightExposurePage.table).forEach(row => {
+        FlightExposurePage.getData(
+            FlightExposurePage.table,
+            'domestic',
+            true
+        ).forEach(row => {
             const cells = row.$$('td')
             const flightData = {
                 type: type,
@@ -53,12 +57,16 @@ describe('Runs an automated GUI browser to scrape data', () => {
 
     it('Will navigate to domestic flights and scrape data', () => {
         const type = 'international'
-        $(FlightExposurePage.titleInternational).scrollIntoView()
+        //$(FlightExposurePage.titleInternational).scrollIntoView()
         $(FlightExposurePage.titleInternational).click()
-        browser.pause(10000)
+        browser.pause(4000)
         FlightExposurePage.selectHowManyEntries(false, 100)
         browser.pause(1000)
-        FlightExposurePage.getData(FlightExposurePage.table).forEach(row => {
+        FlightExposurePage.getData(
+            FlightExposurePage.table,
+            'international',
+            true
+        ).forEach(row => {
             const cells = row.$$('td')
             const flightData = {
                 type: type,

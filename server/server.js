@@ -9,7 +9,7 @@ const Flight = require('./db/models/Flight')
 app.use(cors())
 app.use(bodyParser.json())
 
-app.get('/', async (req, res) => {
+app.get('/getAllFlights', async (req, res) => {
     try {
         const flights = await Flight.find()
         res.json(flights)
@@ -19,7 +19,7 @@ app.get('/', async (req, res) => {
 })
 
 app.post('/updateDB', (req, res) => {
-    console.log('Received')
+    console.log('Request received')
     const flight = new Flight({
         type: req.body.type,
         airline: req.body.airline,
@@ -33,7 +33,7 @@ app.post('/updateDB', (req, res) => {
     flight
         .save()
         .then(data => {
-            res.json(data)
+            console.log(data)
         })
         .catch(error => {
             res.json({ message: error })
