@@ -1,6 +1,6 @@
 require('dotenv').config()
 const FlightExposurePage = require('../pageobjects/FlightExposurePage')
-const API = require('../API/API')
+const API = require('../../server/API/API')
 const axios = require('axios')
 
 describe('Runs an automated GUI browser to scrape data', () => {
